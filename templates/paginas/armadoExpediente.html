@@ -1,0 +1,211 @@
+<h1>{{paginaActual().titulo}}</h1>
+
+<!--GRAFICO DE Proceso DE SELECCIÓN DE BECARIOS, RESALTAR : DEVOLUCIÓN DEL EXPTE A LA SUBGERENCIA DE …-->
+<h3 style="text-align: center">
+    <a class="linkModal" data-target="#modalProceso" data-toggle="modal">
+        Imagen proceso de selección (click para ver)
+    </a>
+</h3>
+
+
+<div class="callout callout-danger">
+    <h2 class="armadoExpedienteAnimate">Contenido del expediente</h2>
+
+    <div class="armadoExpedienteAnimate bg-danger with-padding block-inner">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3>1</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                <a href="files/5 Modelo opcional Nota conformación del Comité de Becas.pdf" target="_blank">
+                    Nota de Conformación del Comité
+                </a> 
+                de Preselección y Selección firmada por el Jefe del Organismo Principal correspondiente.
+            </div>
+        </div>
+    </div>
+
+    <div class="armadoExpedienteAnimate bg-danger with-padding block-inner">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3>2</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                <a href="files/6 Modelo opcional Acta Preselección.pdf" target="_blank">Acta de Preselección</a> 
+                firmada por todos los miembros del Comité de Preselección y
+                Selección, incluyendo la Tabla de Ponderación.
+            </div>
+        </div>
+    </div>
+
+    <div class="armadoExpedienteAnimate bg-danger with-padding block-inner">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3>3</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                <a href="files/7 Modelo opcional Acta Selección.pdf" target="_blank">Acta de selección</a>
+                firmada por todos los miembros del Comité de Preselección y Selección.
+            </div>
+        </div>
+    </div>
+
+    <div class="armadoExpedienteAnimate bg-danger with-padding block-inner">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3>4</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                <a href="files/8 Modelo Plan de Capacitación.pdf" target="_blank">Plan de capacitación</a> ,  
+                donde se describa el objetivo general del desarrollo de la beca, y el plan
+                de actividades a cumplir por el becario durante el primer año firmado o con la inicial del 
+                Director y el Co-director si lo hubiera, según corresponda. Para las Becas A1D se deberá 
+                incluir el nombre de la universidad en la cual se solicitará la inscripción del doctorado.
+            </div>
+        </div>
+    </div>
+
+    <div class="armadoExpedienteAnimate bg-danger with-padding block-inner">
+        <div class="row">
+            <div class="col-xs-1">
+                <h3>5</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                En la nota de giro del Jefe de Organismo Principal a la Gerencia de Planificación, Coordinación y
+                Control, deberá
+                constar su expreso aval a la selección realizada.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--actividad3-->
+<div class="row">
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+
+        <div class="panel panel-danger">
+
+            <div class="panel-heading">
+                <h4 class="panel-title"><i class="icon-book"></i> Ordenar los ítems </h4>
+            </div>
+
+            <div class="panel-body">
+
+                <h4>Ordenar cada frase según corresponda a cada momento del proceso de Preselección.</h4>
+
+                <div ng-model="actividad5.opciones" ui-sortable>
+                    <div class="drag opcionesOrdenables bg-info" ng-repeat="opcion in actividad5.opciones">
+                        {{opcion.valor}}
+                    </div>
+                </div>
+
+                <div ng-show="actividad5.contestada() && !actividad5.correcta()"
+                     class="alert alert-danger fade in block-inner">
+                    <i class="icon-cancel-circle"></i> Deberá volver a intentarlo
+                </div>
+
+                <div ng-show="actividad5.contestada() && actividad5.correcta()"
+                     class="alert alert-success fade in block-inner">
+                    <i class="icon-checkmark-circle"></i> Felicitaciones, ha optado por la respuesta correcta
+                </div>
+
+
+                <div class="text-center botoneraActividad">
+                    <button ng-click="actividad5.contestar()" type="button" class="btn btn-primary">Responder</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-1"></div>
+
+</div>
+
+<!--actividad4-->
+<div class="row">
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+
+        <div class="panel panel-success">
+
+            <div class="panel-heading">
+                <h4 class="panel-title"><i class="icon icon-book"></i> Elegir la opción correcta </h4>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="text-center">
+                    <img class="img-responsive imgCentrada imagenRedondeada" src="images/content/expedientes.png">
+                </div>
+
+                <br>
+
+                <h4>Seleccione la opción correcta en relación con los contenidos del expediente</h4>
+
+                <label class="labelRadio" ng-repeat-start="opcion in actividad4.opciones">
+                    <input type="radio" value="{{opcion.valor}}" ng-model="actividad4.opcionSeleccionada">
+                    {{opcion.valor}}
+                </label>
+                <br ng-repeat-end>
+
+                <br>
+                <br>
+
+                <div ng-show="actividad4.contestada() && !actividad4.correcta()"
+                     class="alert alert-danger fade in block-inner">
+                    <i class="icon-cancel-circle"></i> Deberá volver a intentarlo
+                </div>
+
+                <div ng-show="actividad4.contestada() && actividad4.correcta()"
+                     class="alert alert-success fade in block-inner">
+                    <i class="icon-checkmark-circle"></i> Felicitaciones, ha optado por la respuesta correcta
+                </div>
+
+
+                <div class="text-center botoneraActividad">
+                    <button ng-click="actividad4.contestar()" type="button" class="btn btn-primary">Responder</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-1"></div>
+
+</div>
+
+
+<div class="modal fade" id="modalProceso">
+    <div style="max-width: 900px; width: 100%" class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Proceso de Selección de Becarios</h4>
+            </div>
+
+            <div class="modal-body with-padding block-inner">
+                <img class="img-rounded img-responsive imgCentrada" src="images/content/procesoSeleccion3.png">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $('.tip').tooltip();
+    mostrarProgresivamente(".armadoExpedienteAnimate");
+</script>
+
+<!--ACTIVIDAD ORGANIZAR PASOS SEGÚN CORRESPONDA-->

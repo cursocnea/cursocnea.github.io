@@ -1,0 +1,15 @@
+<div id="paginador" class="well text-center" ng-controller="paginadorController as pagCtrl">
+    <ul class="pagination">
+
+        <li ng-show="!esPrimeraPagina()"><span class="icon icon-arrow-first" ng-click="irAPrimeraPagina()"></span></li>
+        <li ng-show="!esPrimeraPagina()"><span class="icon icon-arrow-left" ng-click="paginaAnterior()"></span></li>
+        <li ng-show="!pagCtrl.getEstaEntreLasPrimeras()"> ... </li>
+
+        <li ng-repeat="pagina in pagCtrl.paginasAMostrar()" ng-click="irA(pagina)" ng-class="{active: paginas.indexOf(paginaActual()) == paginas.indexOf(pagina)}"><span>{{paginas.indexOf(pagina) + 1}}</span></li>
+
+        <li ng-show="!pagCtrl.getEstaEntreLasUltimas()"> ... </li>
+        <li ng-show="!esUltimaPagina()"><span class="icon icon-arrow-right2" ng-click="paginaSiguiente()"></span></li>
+        <li ng-show="!esUltimaPagina()"><span class="icon icon-arrow-right" ng-click="irAUltimaPagina()"></span></li>
+
+    </ul>
+</div>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CNEA">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <title>Becas Aprender Haciendo</title>
+
+    <link href="css/bootstrap.3.3.6.min.css" rel="stylesheet" type="text/css">
+    <link href="css/londinium-theme.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <link href="css/icons.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="js/jQuery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jQuery/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="js/jQuery/jquery-ui-min.js"></script>
+    <script type="text/javascript" src="js/jQuery/touch-punch.js"></script>
+    <script type="text/javascript" src="js/jQuery/animate.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/ngApp/lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/ngApp/lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/ngApp/lib/angular-animate.min.js"></script>
+    <script type="text/javascript" src="js/ngApp/lib/angular-touch.min.js"></script>
+    <script type="text/javascript" src="js/ngApp/lib/sortable.min.js"></script>
+
+    <script type="text/javascript" src="js/ngApp/services/utils.js"></script>
+    <script type="text/javascript" src="js/ngApp/services/actividades.js"></script>
+    <script type="text/javascript" src="js/ngApp/app.js"></script>
+    <script type="text/javascript" src="js/ngApp/paginadorController.js"></script>
+    <script type="text/javascript" src="js/ngApp/actividadIntegradoraController.js"></script>
+
+</head>
+
+<body ng-controller="cursoController" ng-swipe-right="paginaAnterior()" ng-swipe-left="paginaSiguiente()">
+
+<!-- Navbar -->
+<div class="fondoDerecha hidden-sm hidden-xs" ng-include="'templates/navbar.html'"></div>
+<div class="fondoCentrado hidden-lg hidden-md" ng-include="'templates/navbar.html'"></div>
+<!-- /navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <div ng-include="'templates/sidebar.html'"></div>
+
+    <div class="page-content row">
+        <!-- Page header -->
+        <span class="top"></span>
+        <div id="placeHolder" style="height: 130px"></div>
+
+        <div class="hidden-xs col-sm-1">
+            <div class="flechaNav">
+                <span ng-show="!esPrimeraPagina()" class="icon icon-arrow-left" ng-click="paginaAnterior()"></span>
+            </div>
+        </div>
+
+        <div id="columnaCentral" class="col-xs-12 col-sm-10">
+
+            <div id="contenidoPagina" style="z-index: 9; background-color: whitesmoke" class="texto" ng-view=""></div>
+
+            <!--TODO: mostrar solo si tiene audio-->
+            <div id="botoneraInferior">
+                <audio ng-show="paginaActual().tieneAudio" style="width: 100%" id="audio" controls>
+                    <source type="audio/mpeg">
+                </audio>
+
+                <div class="hidden-xs" style="z-index: 8;" ng-include="'templates/paginador.html'"></div>
+                <div class="hidden-sm hidden-md hidden-lg paginadorChico">
+                    <div style="z-index: 8" ng-include="'templates/paginador.html'"></div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /page content -->
+
+        <div class="hidden-xs col-sm-1">
+            <div class="flechaNav">
+                <span ng-show="!esUltimaPagina() && !esPrimeraPagina()" class="icon icon-arrow-right2" ng-click="paginaSiguiente()"></span>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<h1>{{paginaActual().titulo}}</h1>
+
+<div class="callout callout-warning">
+    <h2 class="preseleccionAnimado">El Comité de Preselección y Selección deberá:</h2>
+
+    <div class="with-padding block-inner">
+        <div class="preseleccionAnimado row bg-warning with-padding block-inner">
+            <div class="col-xs-1">
+                <h3>1.1</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                CONTROLAR CUIDADOSAMENTE los listados recibidos. Chequear la documentación sobre la base de los
+                diferentes tipos de beca.
+            </div>
+        </div>
+
+        <div class="preseleccionAnimado row bg-warning with-padding block-inner">
+            <div class="col-xs-1">
+                <h3>1.2</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                Confeccionar un listado final de postulantes desestimados (si los hubiera) indicando el motivo,
+                considerando a
+                aquellos de la lista “POSTULANTES A DEFINIR POR EL DIRECTOR SI CUMPLEN LOS REQUISITOS DE LA BECA” que no
+                tengan
+                carreras afines a la Beca. Estos candidatos NO deben ser incluidos en la Tabla de Ponderación.
+            </div>
+        </div>
+
+        <div class="preseleccionAnimado row bg-warning with-padding block-inner">
+            <div class="col-xs-1">
+                <h3>1.3</h3>
+            </div>
+            <div class="col-sm-11 col-xs-10">
+                Luego de analizar los Curriculum Vitae (C.V.) de los postulantes que sí cumplen con los requisitos. Para
+                ello se
+                deberá utilizar una <a class="linkModal" data-toggle="modal" data-target="#myModal">Tabla de
+                Ponderación</a>.
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div name="actividad2" class="row">
+
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+
+        <div class="panel panel-success">
+
+            <div class="panel-heading">
+                <h4 class="panel-title"><i class="icon icon-book"></i> Elegir la opción correcta </h4>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="text-center">
+                    <img class="img-responsive imgCentrada imagenRedondeada" src="images/content/becarios5.jpg">
+                </div>
+
+                <br>
+
+                <h4>Los postulantes que deben incluirse en la tabla de ponderación son: </h4>
+
+                <label class="labelRadio" ng-repeat="opcion in actividad2.opciones">
+                    <input type="radio" value="{{opcion.valor}}" ng-model="actividad2.opcionSeleccionada">
+                    {{opcion.valor}}
+                </label>
+
+                <br>
+                <br>
+
+                <div ng-show="actividad2.contestada() && !actividad2.correcta()"
+                     class="alert alert-danger fade in block-inner">
+                    <i class="icon-cancel-circle"></i> Deberá volver a intentarlo
+                </div>
+
+                <div ng-show="actividad2.contestada() && actividad2.correcta()"
+                     class="alert alert-success fade in block-inner">
+                    <i class="icon-checkmark-circle"></i> Felicitaciones, ha optado por la respuesta correcta
+                </div>
+
+
+                <div class="text-center botoneraActividad">
+                    <button ng-click="actividad2.contestar()" type="button" class="btn btn-primary">Responder</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-1"></div>
+
+</div>
+
+<div class="callout callout-success">
+    <p>
+        Luego de analizar los C.V. y establecer el <a class="linkModal" data-target="#myModal2" data-toggle="modal">orden
+        de mérito</a>
+        preliminar, el Comité elegirá los candidatos a entrevistar. Se sugiere que se entrevisten,
+        al menos, a los tres primeros según el orden de mérito, siempre y cuando lo permita el
+        número de postulantes que cumplan con el perfil solicitado.
+        El último paso es la elaboración de un Acta de Preselección.
+    </p>
+</div>
+
+<!--Modals-->
+<div style="max-height: 100%" class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title"></h4>
+            </div>
+
+            <div class="modal-body with-padding block-inner">
+
+                <div id="textoTabla">
+                    <div class="callout callout-default">
+                        <h3>Tabla de Ponderación</h3>
+
+                        <p>
+                            La tabla de ponderación es la herramienta que permitirá establecer el orden de mérito.
+                        </p>
+
+                        <p>
+                            Se deben elegir los indicadores de acuerdo a los aspectos del perfil que se consideren
+                            importantes. Cada indicador se divide en niveles definidos, con un peso relativo asignado.
+                            Así se obtendrá un puntaje parcial y uno total para cada uno de los postulantes.
+                            De allí se desprende el orden de mérito preliminar. Es importante considerar que la edad,
+                            el género y el lugar de residencia no pueden considerarse como indicadores en la tabla de
+                            ponderación.
+                        </p>
+                    </div>
+
+                    <div class="callout callout-default">
+                        <h3>¿A quiénes incluir en la tabla de ponderación?</h3>
+
+                        <div class="bg-success with-padding block-inner">
+                            Postulantes que cumplen con los requisitos de la beca.
+                        </div>
+
+                        <div class="bg-success with-padding block-inner">
+                            Postulantes a definir por el director si cumplen con los requisitos de la beca: sólo los
+                            que, a criterio del Director, cumplen los requisitos.
+                        </div>
+
+                        <h3 style="text-align: center">
+                            <a href="files/TABLA DE PONDERACION MODELO.xls" target="_blank">
+                                Modelo de tabla de ponderación (click para descargar)
+                            </a>
+                        </h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4>Orden de Mérito</h4>
+            </div>
+
+            <div class="modal-body with-padding block-inner">
+                <div class="callout callout-default">
+                    Esto es una lista
+                    jerarquizada de los candidatos a entrevistar que permitirá una mejor aproximación a
+                    cada postulante para arribar a una entrevista exitosa.
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    mostrarProgresivamente(".preseleccionAnimado");
+</script>
+
+
