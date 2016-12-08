@@ -157,7 +157,7 @@ app.controller("cursoController", function ($scope, $location, $routeParams, pag
 app.service("paginaService", function () {
 
     this.secciones = [
-        {titulo: "Bienvenidos", paginas: [{titulo: "", nombreTemplate: "portada", tieneAudio: true}]},
+        {titulo: "Bienvenidos", paginas: [{titulo: "", nombreTemplate: "portada"}]},
         {titulo: "Objetivos", paginas: [{titulo: "", nombreTemplate: "objetivos", tieneAudio: true}]},
         {titulo: "Introducción", paginas: [{titulo: "", nombreTemplate: "introduccion", tieneAudio: true}]},
 
