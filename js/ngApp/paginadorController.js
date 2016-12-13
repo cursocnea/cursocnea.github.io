@@ -1,7 +1,7 @@
 app.controller("paginadorController", function ($scope) {
 
     var self = this;
-    this.cantidadPaginasAMostrar = 5;
+    this.cantidadPaginasAMostrar = Math.min(5, $scope.paginas.length);
     this.paginas = $scope.paginas;
 
     this.paginasAMostrar = function() {

@@ -149,6 +149,12 @@ app.controller("cursoController", function ($scope, $location, $routeParams, pag
         $("body").toggleClass("offcanvas-active");
     }
 
+    $scope.paginasParaIndice = function (seccion) {
+        return seccion.paginas.filter(function (pagina) {
+            return !pagina.noMostrarEnIndice;
+        });
+    }
+
     $scope.abrirPagina();
 
 });
@@ -156,68 +162,7 @@ app.controller("cursoController", function ($scope, $location, $routeParams, pag
 
 app.service("paginaService", function () {
 
-    this.secciones = [
-        {titulo: "Bienvenidos", paginas: [{titulo: "", nombreTemplate: "portada"}]},
-        {titulo: "Objetivos", paginas: [{titulo: "", nombreTemplate: "objetivos", tieneAudio: true}]},
-        {titulo: "Introducción", paginas: [{titulo: "", nombreTemplate: "introduccion", tieneAudio: true}]},
-
-        {
-            titulo: "Desarrollo",
-            paginas: [
-                {titulo: "", nombreTemplate: "desarrollo", noMostrarEnIndice: true, tieneAudio: true},
-                {titulo: "", nombreTemplate: "desarrollo2", noMostrarEnIndice: true, tieneAudio: true},
-                {titulo: "Comité de Preselección y Selección", nombreTemplate: "comite", tieneAudio: true},
-                {titulo: "Preselección", nombreTemplate: "preseleccion", tieneAudio: true},
-                {titulo: "Preselección", nombreTemplate: "preseleccion2", noMostrarEnIndice: true},
-                {titulo: "Acta de Preselección", nombreTemplate: "actaPreseleccion", tieneAudio: true},
-                {titulo: "Entrevista y Selección", nombreTemplate: "entrevista", tieneAudio: true},
-                {titulo: "Acta de Selección", nombreTemplate: "actaSeleccion", tieneAudio: true},
-                {titulo: "Armado del Expediente", nombreTemplate: "armadoExpediente", tieneAudio: true},
-                {titulo: "Proceso de Otorgamiento", nombreTemplate: "procesoOtorgamiento", tieneAudio: true}
-            ]
-        },
-
-        {
-            titulo: "Guía para la Entrevista de Selección",
-            paginas: [
-                {
-                    titulo: "Guía para la Entrevista de Selección",
-                    nombreTemplate: "guiaEntrevista",
-                    noMostrarEnIndice: true
-                },
-                {titulo: "Guía de Entrevista", nombreTemplate: "guiaEntrevista2"},
-                {titulo: "Rubro 1. Formación/Estudios", nombreTemplate: "rubro1"},
-                {titulo: "Rubro 2. Trayectoria", nombreTemplate: "rubro2"},
-                {titulo: "Rubro 3. Intereses/Valores", nombreTemplate: "rubro3"},
-                {
-                    titulo: "Rubro 4. Nivel de complejidad de problemas que resuelve/Posibilidades de desarrollo",
-                    nombreTemplate: "rubro4"
-                },
-                {titulo: "Rubro 5. Habilidades y Comportamientos", nombreTemplate: "rubro5"},
-                {titulo: "Guía para realizar el informe de la entrevista", nombreTemplate: "guiaInforme"},
-            ]
-        },
-
-        {titulo: "Actividades", paginas: [{titulo: "", nombreTemplate: "actividades"}]},
-        {
-            titulo: "Síntesis",
-            paginas: [
-                {titulo: "Síntesis", nombreTemplate: "sintesis", noMostrarEnIndice: true},
-            ]
-        },
-
-        {titulo: "Autoevaluación", paginas: [{titulo: "Autoevaluación", nombreTemplate: "actividadIntegradora"}]},
-        {titulo: "Cierre", paginas: [{titulo: "Cierre", nombreTemplate: "cierre"}]},
-
-
-        {
-            titulo: "Preguntas Frecuentes",
-            paginas: [{titulo: "Preguntas Frecuentes", nombreTemplate: "preguntasFrecuentes", noMostrarEnIndice: true}]
-        },
-
-        {titulo: "Fichaje", paginas: [{titulo: "Fichaje", nombreTemplate: "fichaje", noMostrarEnIndice: true}]}
-
-    ];
+    this.secciones = appData.secciones;
 
     this.generarPaginas = function () {
         var paginas = [];
@@ -231,7 +176,6 @@ app.service("paginaService", function () {
 
     this.getSeccionByPagina = function (pagina) {
         return this.secciones.find(function (seccion) {
-            //return seccion.paginas.includes(pagina);  -> ".includes" no anda en firefox
             return seccion.paginas.some(function (it) {
                 return it == pagina;
             })
@@ -247,12 +191,6 @@ app.service("paginaService", function () {
     };
 
 })
-
-function reproducirAudio(nombreAudio) {
-    $("#elementoAudio").append(
-        ''
-    );
-}
 
 app.factory('audio', function ($document) {
     var audioElement = document.getElementById("audio"); // <-- Magic trick here

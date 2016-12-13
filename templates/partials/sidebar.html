@@ -1,0 +1,71 @@
+<div class="hidden-xs hidden-sm">
+    <div class="sidebar" ng-controller="sideBarController" ng-swipe-right="$event.stopPropagation(); mostrarSideMenu()"
+         ng-swipe-left="$event.stopPropagation(); ocultarSideMenu()">
+
+        <div id="sideMenu">
+            <div style="border: none; border-radius: 0" class="sidebar-content panel">
+
+                <a ng-click="clickItemIndice(seccion)" ng-class="{'itemMenu': true, 'active': seccionActual() == seccion}"
+                   ng-repeat-start="seccion in secciones" data-target="#item{{secciones.indexOf(seccion)}}" data-toggle="collapse"
+                   data-parent="#sideMenu">
+                    
+                    <div class="row">
+                    <div class="col-xs-10"><span>{{seccion.titulo.toUpperCase()}}</span></div>
+                    <div class="col-xs-1"><i style="margin-left: 20px" ng-class="{'icon-arrow-right3': paginasParaIndice(seccion).length <= 1, 'icon-arrow-down2': paginasParaIndice(seccion).length > 1}"></i></div>
+                    </div>
+                </a>
+
+                <div class="collapse" id="item{{secciones.indexOf(seccion)}}" ng-repeat-end>
+                    <a ng-class="{'subitemMenu': true, 'active': paginaActual() == pagina}"
+                       ng-repeat="pagina in seccion.paginas"
+                       ng-click="clickSubitemIndice(pagina)"
+                       ng-show="seccion.paginas.length > 1 && !pagina.noMostrarEnIndice">{{pagina.titulo}}</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--menu escondido-->
+<div class="hidden-md hidden-lg">
+    <div class="sidebar" ng-controller="sideBarController" ng-swipe-right="$event.stopPropagation(); mostrarSideMenu()"
+         ng-swipe-left="$event.stopPropagation(); ocultarSideMenu()">
+
+        <div id="indice" class="sidebar-content" style="padding-top:55px;">
+
+            <ul class="navigation">
+
+                <li ng-class="{'active': seccionActual() == seccion}" data-parent="#indice" ng-repeat="seccion in secciones">
+
+                    <a data-toggle="collapse" data-target="#sm{{secciones.indexOf(seccion)}}" ng-click="clickItemIndice(seccion)">
+                        <span>{{seccion.titulo.toUpperCase()}}</span>
+                        <i ng-class="{'icon-arrow-right3': seccion.paginas.length == 1, 'icon-arrow-down2': seccion.paginas.length > 1}"></i>
+                    </a>
+
+                    <div class="sublinks collapse" id="sm{{secciones.indexOf(seccion)}}">
+                        <ul ng-show="seccion.paginas.length > 1">
+                            <li ng-hide="pagina.noMostrarEnIndice" ng-class="{'active': paginaActual() == pagina}" ng-repeat="pagina in seccion.paginas">
+                                <a ng-click="clickSubitemIndice(pagina)">
+                                    <span>{{pagina.titulo}}</span>
+                                    <i ng-class="{'icon-arrow-right3 pull-right': paginaActual() == pagina}"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(".sidebar").mCustomScrollbar({
+        mouseWheelPixels: 100
+    });
+</script>
